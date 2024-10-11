@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Summarize Contracts by Field.
+  description: Summarizes the total number of contracts based on various filters and groups them by a specified field.
+  tags:
+    - salesforce
+    - contract
+    - summary
+    - aggregate
+code: sql
+codeFile: summary.sql
+format: json
+security:
+  public: false
+  scopes:
+    - contracts:read
+computeClass: normal
+enabled: true

@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Opportunity Summary by Field.
+  description: Summarizes the total number of opportunities based on various filters and grouping options.
+  tags:
+    - salesforce
+    - opportunity
+    - summary
+    - aggregate
+code: sql
+codeFile: summary.sql
+format: json
+security:
+  public: false
+  scopes:
+    - opportunities:read
+computeClass: normal
+enabled: true

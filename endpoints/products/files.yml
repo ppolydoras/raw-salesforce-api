@@ -1,0 +1,22 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get Product attached files.
+  description: Retrieves all files associated with a specific product ID.
+  tags:
+    - salesforce
+    - product
+    - file
+    - content
+    - attachment
+    - product-file
+code: sql
+codeFile: files.sql
+format: json
+security:
+  public: false
+  scopes:
+    - products:read
+    - product-files:read
+computeClass: normal
+enabled: true

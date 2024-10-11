@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Salesforce Contacts.
+  description: Retrieves Salesforce contacts with pagination and various filters such as account name, contact name, contact email, and contact title.
+  tags:
+    - salesforce
+    - contact
+code: sql
+codeFile: contacts.sql
+format: json
+security:
+  public: false
+  scopes:
+    - contacts:read
+computeClass: normal
+enabled: true

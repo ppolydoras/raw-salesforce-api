@@ -1,0 +1,22 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get List of Status Options for Salesforce Leads.
+  description: Returns a list of different statuses for Salesforce Leads.
+  tags:
+    - salesforce
+    - status
+    - lead
+    - lead-status
+    - enumeration
+    - list
+code: snapi
+codeFile: lead_statuses.snapi
+format: json
+security:
+  public: false
+  scopes:
+    - lead-statuses:read
+    - enumeration:read
+computeClass: normal
+enabled: true

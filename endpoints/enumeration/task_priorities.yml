@@ -1,0 +1,22 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get List of Priority Options for Salesforce Tasks.
+  description: Returns a list of possible priorities for a Salesforce Task.
+  tags:
+    - salesforce
+    - priority
+    - task
+    - task-priority
+    - enumeration
+    - list
+code: snapi
+codeFile: task_priorities.snapi
+format: json
+security:
+  public: false
+  scopes:
+    - task-priorities:read
+    - enumeration:read
+computeClass: normal
+enabled: true

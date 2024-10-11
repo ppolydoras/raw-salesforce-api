@@ -1,0 +1,21 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get List of Account Types
+  description: Returns the closed list of account types, used in Salesforce Account table.
+  tags:
+    - salesforce
+    - account-type
+    - account
+    - enumeration
+    - list
+code: snapi
+codeFile: account_types.snapi
+format: json
+security:
+  public: false
+  scopes:
+    - account-types:read
+    - enumeration:read
+computeClass: normal
+enabled: true

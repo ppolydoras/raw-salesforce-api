@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Salesforce Accounts.
+  description: Retrieves Salesforce accounts with pagination and supports various filters like account industry, account type, and account billing country.
+  tags:
+    - salesforce
+    - account
+code: sql
+codeFile: accounts.sql
+format: json
+security:
+  public: false
+  scopes:
+    - accounts:read
+computeClass: normal
+enabled: true

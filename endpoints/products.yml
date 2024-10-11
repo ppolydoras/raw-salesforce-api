@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get Salesforce Products.
+  description: Retrieves products based on various filters such as product name, description, family, ID, code, type, unit of measure, SKU, and more.
+  tags:
+    - salesforce
+    - product
+code: sql
+codeFile: products.sql
+format: json
+security:
+  public: false
+  scopes:
+    - products:read
+computeClass: normal
+enabled: true

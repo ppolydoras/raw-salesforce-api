@@ -1,0 +1,22 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get contract status codes.
+  description: Returns a list of contract status codes, such as "Draft", "InApproval", and "Activated".
+  tags:
+    - salesforce
+    - contract-status
+    - status
+    - contract
+    - enumeration
+    - list
+code: snapi
+codeFile: task_subtypes.snapi
+format: json
+security:
+  public: false
+  scopes:
+    - contract-statuses:read
+    - enumeration:read
+computeClass: normal
+enabled: true

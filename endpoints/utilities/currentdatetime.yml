@@ -1,0 +1,25 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get current Date & Time.
+  description: Retrieve current Date & Time along with timezone
+  tags:
+    - time
+    - date
+    - datetime
+    - current
+    - now
+    - timezone
+    - timestamp
+    - epoch
+    - epoch-time
+    - unix-time
+code: snapi
+codeFile: currentdatetime.snapi
+format: json
+security:
+  public: false
+  scopes:
+    - currentdatetime:read
+computeClass: normal
+enabled: true

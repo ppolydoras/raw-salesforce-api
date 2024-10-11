@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Product Summary by Field.
+  description: Summarizes the total, active, deleted and archived products based on various filters and grouping options.
+  tags:
+    - salesforce
+    - product
+    - summary
+    - aggregate
+code: sql
+codeFile: summary.sql
+format: json
+security:
+  public: false
+  scopes:
+    - products:read
+computeClass: normal
+enabled: true

@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Lead Summary by Field.
+  description: This endpoint retrieves a summary of leads based on various filters and groups them by a specified field. The summary includes total leads, converted and unconverted leads, average time to conversion, and breakdowns by status, rating, source, and industry.
+  tags:
+    - salesforce
+    - lead
+    - summary
+    - aggregate
+code: sql
+codeFile: summary.sql
+format: json
+security:
+  public: false
+  scopes:
+    - leads:read
+computeClass: normal
+enabled: true

@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get leads by rating and status
+  description: Retrieves accounts from Salesforce Lead based on filters like rating and status. In order to retrieve permissible values for ratings, statuses, sources and industries, consult `/salesforce_gpt/enumeration/ratings`, `/salesforce_gpt/enumeration/lead_statuses`, `/salesforce_gpt/enumeration/lead_sources`, `/salesforce_gpt/enumeration/industries` respectively
+  tags:
+    - salesforce
+    - lead
+code: sql
+codeFile: leads.sql
+format: json
+security:
+  public: false
+  scopes:
+    - leads:read
+computeClass: normal
+enabled: true

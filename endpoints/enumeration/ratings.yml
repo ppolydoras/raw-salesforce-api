@@ -1,0 +1,22 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get List of Ratings for Salesforce Leads or Accounts.
+  description: Returns a list of different ratings for Salesforce Leads or Accounts.
+  tags:
+    - salesforce
+    - rating
+    - lead
+    - account
+    - enumeration
+    - list
+code: snapi
+codeFile: ratings.snapi
+format: json
+security:
+  public: false
+  scopes:
+    - ratings:read
+    - enumeration:read
+computeClass: normal
+enabled: true

@@ -1,0 +1,244 @@
+@startuml
+
+class Summary {
+}
+
+class Account {
+    +account_id : string
+    +account_name : string
+    ...
+}
+
+class AccountEvent {
+    +event_id : string
+    +event_who_id : string
+    +event_what_id : string
+    +event_subject : string
+    ...
+}
+
+class AccountFile {
+    +id : string
+    +content_document_id : string
+    +is_latest : boolean
+    +content_url : string
+    +content_body_id : string
+    ...
+}
+
+class AccountTask {
+    +task_id : string
+    +task_subject : string
+    +task_status : string
+    +task_priority : string
+    ...
+}
+
+class AccountTaskSummary extends Summary {
+    +group_by_value : string
+    +total_tasks : long
+    +closed_tasks : long
+    +high_priority_tasks : long
+    +tasks_created_in_date_range : long
+}
+
+class BusinessCase {
+    +business_case_id : string
+    +account_id : string
+    ...
+}
+
+class BusinessCaseExpert {
+    +expert_user_id : string
+    +expert_username : string
+    +expert_email : string
+    +expert_is_active : boolean
+    +business_case_id : string
+    +expertise : string
+    +reason_for_assignment : string
+    +expert_assignment_date : datetime
+    +expert_user_created_date : datetime
+}
+
+class Contact {
+    +contact_id : string
+    +contact_name : string
+    +contact_account_id : string
+    +account_name : string
+    ...
+}
+
+class ContactSummary extends Summary {
+    +group_by_value : string
+    +total_contacts : long
+    +active_contacts : long
+    +deleted_contacts : long
+    +contacts_created_in_date_range : long
+}
+
+class Contract {
+    +contract_id : string
+    +account_id : string
+    +account_name : string
+    +contract_number : string
+    +contract_term : int
+    +contract_end_date : datetime
+    +owner_id : string
+    ...
+}
+
+class ContractSummary extends Summary {
+    +group_by_value : string
+    +total_contracts : long
+    +active_contracts : long
+    +expired_contracts : long
+    +upcoming_renewals_30_days : long
+    +avg_contract_term : decimal
+    +draft_contracts : long
+    +pending_contracts : long
+    +contracts_with_owner : long
+    +contracts_without_owner : long
+}
+
+class Lead {
+    +lead_id : string
+    +lead_name : string
+    ...
+}
+
+class LeadSummary extends Summary {
+    +group_by_value : string
+    +total_leads : long
+    +converted_leads : long
+    +unconverted_leads : long
+    +avg_days_to_convert : decimal
+    +open_leads : long
+    +closed_leads : long
+    +hot_leads : long
+    +warm_leads : long
+    +cold_leads : long
+    +web_leads : long
+    +referral_leads : long
+    +partner_leads : long
+    +technology_leads : long
+    +healthcare_leads : long
+}
+
+class LeadSummary extends Summary {
+    +group_by_value : string
+    +total_leads : long
+    +converted_leads : long
+    +unconverted_leads : long
+    +avg_days_to_convert : decimal
+    +open_leads : long
+    +closed_leads : long
+    +hot_leads : long
+    +warm_leads : long
+    +cold_leads : long
+    +web_leads : long
+    +referral_leads : long
+    +partner_leads : long
+    +technology_leads : long
+    +healthcare_leads : long
+}
+
+class Opportunity {
+    +opportunity_id : string
+    +opportunity_name : string
+    +account_id : string
+    +account_name : string
+    ...
+}
+
+class OpportunityEvent {
+    +event_id : string
+    +event_who_id : string
+    +event_what_id : string
+    +event_subject : string
+    ...
+}
+
+class OpportunityTask {
+    +task_id : string
+    +task_subject : string
+    +task_status : string
+    +task_priority : string
+    +task_activity_date : datetime
+    ...
+}
+
+class OpportunityTaskSummary extends Summary {
+    +group_by_value : string
+    +total_tasks : long
+    +closed_tasks : long
+    +high_priority_tasks : long
+    +tasks_created_in_date_range : long
+}
+
+class OpportunityProduct {
+    +quantity : double
+    +unit_price : double
+    +total_price : double
+    +product_name : string
+    +product_id : string
+    +opportunity_name : string
+    +opportunity_id : string
+}
+
+class Product {
+    +product_id : string
+    +product_name : string
+    ...
+}
+
+class ProductSummary extends Summary {
+    +group_by_value : string
+    +total_products : long
+    +active_products : long
+    +deleted_products : long
+    +archived_products : long
+    +products_created_in_date_range : long
+}
+
+
+' Relationships
+AccountTask --> Account : "account_id"
+AccountEvent --> Account : "account_id"
+AccountFile --> Account : "account_id"
+BusinessCase --> Account : "account_id"
+BusinessCaseExpert --> BusinessCase : "business_case_id"
+Contact --> Account : "contact_account_id"
+Contract --> Account : "contact_account_id"
+Lead --> Account : "account_id"
+Opportunity --> Account : "account_id"
+OpportunityEvent --> Opportunity : "opportunity_id"
+OpportunityProduct --> Opportunity : "opportunity_id"
+OpportunityProduct --> Product : "product_id"
+OpportunityTask --> Opportunity : "opportunity_id"
+'Account -> User : "owner_id"
+'AccountEvent -> User : "owner_id"
+'AccountFile -> User : "owner_id"
+'AccountTask -> User : "owner_id"
+'Contact -> User : "owner_id"
+'Contract -> User : "owner_id"
+'Opportunity -> User : "owner_id"
+'Lead -> User : "owner_id"
+'BusinessCaseExpert -> User : "expert_user_id"
+'Contact -> User : "created_by_id"
+'Lead -> User : "created_by_id"
+'OpportunityEvent -> User : "created_by_id"
+'OpportunityTask -> User : "created_by_id"
+'AccountEvent -> User : "created_by_id"
+'AccountTask -> User : "created_by_id"
+'AccountFile -> User : "created_by_id"
+'Account -> User : "created_by_id"
+'BusinessCase -> User : "created_by_id"
+'Contract -> User : "created_by_id"
+AccountTaskSummary --> AccountTask
+ContactSummary --> Contact
+ContractSummary --> Contract
+LeadSummary --> Lead
+OpportunityTaskSummary --> OpportunityTask
+ProductSummary --> Product
+
+@enduml

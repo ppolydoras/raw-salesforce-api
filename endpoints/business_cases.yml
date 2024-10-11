@@ -1,0 +1,18 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get Business Cases.
+  description: Retrieves Salesforce business cases based on various search parameters.
+  tags:
+    - salesforce
+    - business-case
+    - account
+code: sql
+codeFile: business_cases.sql
+format: json
+security:
+  public: false
+  scopes:
+    - business-cases:read
+computeClass: normal
+enabled: true

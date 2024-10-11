@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get contracts by account name, end date (renewal date) and billing address
+  description: Retrieve contracts by account name, contract description, status, contract terms, pricebook id, owner, start date, end date (renewal date) and billing address. Permissible values for status can be found in endpoint `/salesforce_gpt/enumeration/contract_statuses`
+  tags:
+    - salesforce
+    - contract
+code: sql
+codeFile: contracts.sql
+format: json
+security:
+  public: false
+  scopes:
+    - contracts:read
+computeClass: normal
+enabled: true

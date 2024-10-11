@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Filter products by opportunity.
+  description: Retrieves products related to opportunities based on filters like opportunity name, opportunity id, and product name.
+  tags:
+    - salesforce
+    - opportunity-product
+    - product
+code: sql
+codeFile: products.sql
+format: json
+security:
+  public: false
+  scopes:
+    - products:read
+    - opportunity-products:read
+computeClass: normal
+enabled: true

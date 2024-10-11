@@ -1,0 +1,20 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: List of Task Subtypes.
+  description: Returns a list of Task Subtypes, such as "Email", "Call", and "Task".
+  tags:
+    - salesforce
+    - task-subtype
+    - enumeration
+    - list
+code: snapi
+codeFile: task_subtypes.snapi
+format: json
+security:
+  public: false
+  scopes:
+    - task-subtypes:read
+    - enumeration:read
+computeClass: normal
+enabled: true

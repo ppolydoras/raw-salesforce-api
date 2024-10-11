@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Summarize Salesforce Accounts.
+  description: Summarizes the total number of Salesforce accounts based on various filters and groups them by a specified field. Permissible group by fields are these - 'account_industry', 'account_type', 'account_billing_country', 'account_rating', 'account_source'
+  tags:
+    - salesforce
+    - account
+    - summary
+    - aggregate
+code: sql
+codeFile: summary.sql
+format: json
+security:
+  public: false
+  scopes:
+    - accounts:read
+computeClass: normal
+enabled: true

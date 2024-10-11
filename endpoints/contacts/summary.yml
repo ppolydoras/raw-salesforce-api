@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Summarize Contacts by Field.
+  description: Summarizes the total number of contacts in Salesforce, grouped by specified fields like account name, mailing country, or contact title. Supports filtering by account name, mailing country, contact creation date range.
+  tags:
+    - salesforce
+    - contact
+    - summary
+    - aggregate
+code: sql
+codeFile: summary.sql
+format: json
+security:
+  public: false
+  scopes:
+    - contacts:read
+computeClass: normal
+enabled: true

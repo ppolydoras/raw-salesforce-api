@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get Salesforce Users.
+  description: Returns Salesforce users based on various filters such as username, email, active status, and date ranges. Pagination is supported. All Salesforce entities are created by (created_by_id) and owned by (owner_id) a Salesforce User.
+  tags:
+    - salesforce
+    - user
+code: sql
+codeFile: users.sql
+format: json
+security:
+  public: false
+  scopes:
+    - users:read
+computeClass: normal
+enabled: true

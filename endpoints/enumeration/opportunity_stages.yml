@@ -1,0 +1,22 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get List of Salesforce Opportunity Stages.
+  description: Returns a list of stages in Salesforce Opportunities.
+  tags:
+    - salesforce
+    - opportunity-stage
+    - opportunity
+    - stage
+    - enumeration
+    - list
+code: snapi
+codeFile: opportunity_stages.snapi
+format: json
+security:
+  public: false
+  scopes:
+    - opportunity-stages:read
+    - enumeration:read
+computeClass: normal
+enabled: true

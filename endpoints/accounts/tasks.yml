@@ -1,0 +1,19 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Account Tasks.
+  description: Retrieves tasks and related account information from Salesforce based on filters like account name, account ID, and task subject. Permissible values for task sabtypes can be found in endpoint '/salesforce_gpt/enumeration/task_subtypes'
+  tags:
+    - salesforce
+    - task
+    - account-task
+code: sql
+codeFile: tasks.sql
+format: json
+security:
+  public: false
+  scopes:
+    - account-tasks:read
+    - tasks:read
+computeClass: normal
+enabled: true

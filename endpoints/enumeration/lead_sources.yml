@@ -1,0 +1,22 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get List of Salesforce Lead Sources
+  description: Retrieve the List of Salesforce Lead Sources
+  tags:
+    - salesforce
+    - source
+    - lead
+    - lead-source
+    - enumeration
+    - list
+code: snapi
+codeFile: lead_sources.snapi
+format: json
+security:
+  public: false
+  scopes:
+    - lead-sources:read
+    - enumeration:read
+computeClass: normal
+enabled: true

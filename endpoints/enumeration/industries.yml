@@ -1,0 +1,21 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: List of Salesforce Account or Lead Industries.
+  description: This endpoint returns a list of industry names for Salesforce Accounts or Leads.
+  tags:
+    - salesforce
+    - industry
+    - lead
+    - account
+    - list
+code: snapi
+codeFile: industries.snapi
+format: json
+security:
+  public: false
+  scopes:
+    - industries:read
+    - enumeration:read
+computeClass: normal
+enabled: true

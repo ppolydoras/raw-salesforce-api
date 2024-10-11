@@ -1,0 +1,22 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get Account attached files.
+  description: Retrieves all files associated with a specific account ID.
+  tags:
+    - salesforce
+    - account
+    - file
+    - content
+    - attachment
+    - account-file
+code: sql
+codeFile: files.sql
+format: json
+security:
+  public: false
+  scopes:
+    - account-files:read
+    - files:read
+computeClass: normal
+enabled: true

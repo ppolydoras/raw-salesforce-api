@@ -1,0 +1,22 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Get List of Status Options for Salesforce Tasks.
+  description: Returns a list of possible statuses for a Salesforce Task.
+  tags:
+    - salesforce
+    - status
+    - task
+    - task-status
+    - enumeration
+    - list
+code: snapi
+codeFile: task_statuses.snapi
+format: json
+security:
+  public: false
+  scopes:
+    - task-statuses:read
+    - enumeration:read
+computeClass: normal
+enabled: true

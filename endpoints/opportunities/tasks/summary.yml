@@ -1,0 +1,21 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Salesforce Opportunity Task Summary.
+  description: Summarizes the total number of tasks related to a given opportunity, with various filtering and grouping options.
+  tags:
+    - salesforce
+    - task
+    - opportunity-task
+    - summary
+    - aggregate
+code: sql
+codeFile: summary.sql
+format: json
+security:
+  public: false
+  scopes:
+    - tasks:read
+    - opportunity-tasks:read
+computeClass: normal
+enabled: true

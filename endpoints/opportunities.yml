@@ -1,0 +1,17 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Salesforce Opportunities.
+  description: Retrieve opportunities based on optional filters like account name, owner name, and stage from the Salesforce database. The list of permissible values for opportunity_stage can be found in this endpoint `/salesforce_gpt/enumeration/opportunity_stages`
+  tags:
+    - salesforce
+    - opportunity
+code: sql
+codeFile: opportunities.sql
+format: json
+security:
+  public: false
+  scopes:
+    - opportunities:read
+computeClass: normal
+enabled: true

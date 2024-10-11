@@ -1,0 +1,20 @@
+raw: "0.10"
+endpoint: GET
+metadata:
+  title: Retrieve Account Events.
+  description: Retrieves events related to accounts based on filters like account name, account id, and event subject.
+  tags:
+    - salesforce
+    - event
+    - account
+    - account-event
+code: sql
+codeFile: events.sql
+format: json
+security:
+  public: false
+  scopes:
+    - account-events:read
+    - events:read
+computeClass: normal
+enabled: true
