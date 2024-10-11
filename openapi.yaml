@@ -5,7 +5,7 @@ info:
 servers:
   - url: https://dev-mlmsul7huphxehi.integration.api.raw-labs.com
 paths:
-  /salesforce_gpt/users/summary:
+  /api/users/summary:
     get:
       tags:
         - aggregate
@@ -133,7 +133,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/contracts:
+  /api/contracts:
     get:
       tags:
         - contract
@@ -143,7 +143,7 @@ paths:
       description: "Retrieve contracts by account name, contract description, status,\
         \ contract terms, pricebook id, owner, start date, end date (renewal date)\
         \ and billing address. Permissible values for status can be found in endpoint\
-        \ `/salesforce_gpt/enumeration/contract_statuses`"
+        \ `/api/enumeration/contract_statuses`"
       operationId: no_decl_94777
       parameters:
         - name: start_date_range_start
@@ -290,7 +290,7 @@ paths:
           schema:
             type: string
             description: the status of the contract - permissible values can be found
-              in endpoint '/salesforce_gpt/enumeration/contract_statuses'. If null then
+              in endpoint '/api/enumeration/contract_statuses'. If null then
               all statuses are included.
         - name: contract_term
           in: query
@@ -503,7 +503,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/products/files:
+  /api/products/files:
     get:
       tags:
         - product-file
@@ -717,7 +717,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/contacts:
+  /api/contacts:
     get:
       tags:
         - contact
@@ -1159,7 +1159,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/enumeration/task_subtypes:
+  /api/enumeration/task_subtypes:
     get:
       tags:
         - enumeration
@@ -1206,7 +1206,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/enumeration/industries:
+  /api/enumeration/industries:
     get:
       tags:
         - lead
@@ -1254,7 +1254,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/accounts/summary:
+  /api/accounts/summary:
     get:
       tags:
         - account
@@ -1356,7 +1356,7 @@ paths:
           schema:
             type: string
             description: "comma-separated list of account types - permissible values\
-            \ can be found in endpoint '/salesforce_gpt/enumeration/account_types'.\
+            \ can be found in endpoint '/api/enumeration/account_types'.\
             \ If null, all account types are included."
         - name: account_industry
           in: query
@@ -1364,7 +1364,7 @@ paths:
           schema:
             type: string
             description: "comma-separated list of account industries - permissible values\
-            \ can be found in endpoint '/salesforce_gpt/enumeration/industries'. If\
+            \ can be found in endpoint '/api/enumeration/industries'. If\
             \ null, all industries are included."
         - name: operating_hours_id
           in: query
@@ -1434,7 +1434,7 @@ paths:
           schema:
             type: string
             description: "Filter by account rating - permissible values can be found\
-            \ in endpoint '/salesforce_gpt/enumeration/ratings'. If null, all account\
+            \ in endpoint '/api/enumeration/ratings'. If null, all account\
             \ ratings are included."
         - name: account_last_activity_date_range_start
           in: query
@@ -1516,7 +1516,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/opportunities:
+  /api/opportunities:
     get:
       tags:
         - opportunity
@@ -1524,7 +1524,7 @@ paths:
       summary: Retrieve Salesforce Opportunities.
       description: "Retrieve opportunities based on optional filters like account\
         \ name, owner name, and stage from the Salesforce database. The list of permissible\
-        \ values for opportunity_stage can be found in this endpoint `/salesforce_gpt/enumeration/opportunity_stages`"
+        \ values for opportunity_stage can be found in this endpoint `/api/enumeration/opportunity_stages`"
       operationId: no_decl_94783
       parameters:
         - name: is_won
@@ -1562,7 +1562,7 @@ paths:
           schema:
             type: string
             description: "comma-separated list of opportunity stages - permissible values\
-            \ can be found in endpoint '/salesforce_gpt/enumeration/opportunity_stages'.\
+            \ can be found in endpoint '/api/enumeration/opportunity_stages'.\
             \ If null, all stages are included."
         - name: page
           in: query
@@ -1870,7 +1870,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/utilities/currentdatetime:
+  /api/utilities/currentdatetime:
     get:
       tags:
         - timestamp
@@ -1997,7 +1997,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/enumeration/account_types:
+  /api/enumeration/account_types:
     get:
       tags:
         - account-type
@@ -2045,7 +2045,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/opportunities/summary:
+  /api/opportunities/summary:
     get:
       tags:
         - aggregate
@@ -2087,7 +2087,7 @@ paths:
           schema:
             type: string
             description: comma-separated list of opportunity stages - permissible values
-              can be found in endpoint '/salesforce_gpt/enumeration/opportunity_stages'.
+              can be found in endpoint '/api/enumeration/opportunity_stages'.
               If null then all stages are included.
         - name: opportunity_created_date_range_end
           in: query
@@ -2227,7 +2227,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/accounts:
+  /api/accounts:
     get:
       tags:
         - account
@@ -2336,7 +2336,7 @@ paths:
           schema:
             type: string
             description: "comma-separated list of account types - permissible values\
-            \ can be found in endpoint '/salesforce_gpt/enumeration/account_types'.\
+            \ can be found in endpoint '/api/enumeration/account_types'.\
             \ If null, all account types are included."
         - name: account_industry
           in: query
@@ -2344,7 +2344,7 @@ paths:
           schema:
             type: string
             description: "comma-separated list of account industries - permissible values\
-            \ can be found in endpoint '/salesforce_gpt/enumeration/industries'. If\
+            \ can be found in endpoint '/api/enumeration/industries'. If\
             \ null, all industries are included."
         - name: operating_hours_id
           in: query
@@ -2414,7 +2414,7 @@ paths:
           schema:
             type: string
             description: "Filter by account rating - permissible values can be found\
-            \ in endpoint '/salesforce_gpt/enumeration/ratings'. If null, all account\
+            \ in endpoint '/api/enumeration/ratings'. If null, all account\
             \ ratings are included."
         - name: account_last_activity_date_range_start
           in: query
@@ -2673,7 +2673,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/enumeration/ratings:
+  /api/enumeration/ratings:
     get:
       tags:
         - lead
@@ -2721,7 +2721,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/accounts/events:
+  /api/accounts/events:
     get:
       tags:
         - account
@@ -3088,7 +3088,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/products:
+  /api/products:
     get:
       tags:
         - product
@@ -3317,7 +3317,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/accounts/tasks/summary:
+  /api/accounts/tasks/summary:
     get:
       tags:
         - task
@@ -3360,7 +3360,7 @@ paths:
           schema:
             type: string
             description: the subtype of the task related with a given account. Permissible
-              values can be found in endpoint '/salesforce_gpt/enumeration/task_subtypes'
+              values can be found in endpoint '/api/enumeration/task_subtypes'
         - name: account_id
           in: query
           required: false
@@ -3459,7 +3459,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/products/summary:
+  /api/products/summary:
     get:
       tags:
         - aggregate
@@ -3634,7 +3634,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/leads/summary:
+  /api/leads/summary:
     get:
       tags:
         - aggregate
@@ -3701,7 +3701,7 @@ paths:
           schema:
             type: string
             description: "comma-separated list of lead statuses - permissible values\
-            \ can be found in endpoint `/salesforce_gpt/enumeration/lead_statuses`.\
+            \ can be found in endpoint `/api/enumeration/lead_statuses`.\
             \ If null, all statuses are included."
         - name: lead_rating
           in: query
@@ -3709,7 +3709,7 @@ paths:
           schema:
             type: string
             description: "comma-separated list of lead ratings - permissible values\
-            \ can be found in endpoint `/salesforce_gpt/enumeration/lead_ratings`.\
+            \ can be found in endpoint `/api/enumeration/lead_ratings`.\
             \ If null, all ratings are included."
         - name: lead_industry
           in: query
@@ -3717,7 +3717,7 @@ paths:
           schema:
             type: string
             description: the industry associated with the Salesforce Lead. Permissible
-              values can be found in endpoint `/salesforce_gpt/enumeration/industries`.
+              values can be found in endpoint `/api/enumeration/industries`.
               Substring search is supported.
         - name: lead_is_deleted
           in: query
@@ -3876,7 +3876,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/business_cases/experts:
+  /api/business_cases/experts:
     get:
       tags:
         - business-case
@@ -4055,7 +4055,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/contacts/summary:
+  /api/contacts/summary:
     get:
       tags:
         - aggregate
@@ -4173,7 +4173,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/enumeration/opportunity_stages:
+  /api/enumeration/opportunity_stages:
     get:
       tags:
         - opportunity-stage
@@ -4221,7 +4221,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/leads:
+  /api/leads:
     get:
       tags:
         - lead
@@ -4229,9 +4229,9 @@ paths:
       summary: Get leads by rating and status
       description: "Retrieves accounts from Salesforce Lead based on filters like\
         \ rating and status. In order to retrieve permissible values for ratings,\
-        \ statuses, sources and industries, consult `/salesforce_gpt/enumeration/ratings`,\
-        \ `/salesforce_gpt/enumeration/lead_statuses`, `/salesforce_gpt/enumeration/lead_sources`,\
-        \ `/salesforce_gpt/enumeration/industries` respectively"
+        \ statuses, sources and industries, consult `/api/enumeration/ratings`,\
+        \ `/api/enumeration/lead_statuses`, `/api/enumeration/lead_sources`,\
+        \ `/api/enumeration/industries` respectively"
       operationId: no_decl_94797
       parameters:
         - name: max_employees
@@ -4368,7 +4368,7 @@ paths:
           schema:
             type: string
             description: lead source/origin - permissible values can be found in endpoint
-              `/salesforce_gpt/enumeration/lead_sources`. If null the all sources are
+              `/api/enumeration/lead_sources`. If null the all sources are
               included. Substring search is supported.
         - name: lead_owner_id
           in: query
@@ -4383,7 +4383,7 @@ paths:
           schema:
             type: string
             description: comma-separated list of lead statuses - permissible values
-              can be found in endpoint `/salesforce_gpt/enumeration/lead_statuses`.
+              can be found in endpoint `/api/enumeration/lead_statuses`.
               If null then all statuses are included.
         - name: lead_rating
           in: query
@@ -4391,7 +4391,7 @@ paths:
           schema:
             type: string
             description: comma-separated list of lead ratings - permissible values can
-              be found in endpoint `/salesforce_gpt/enumeration/lead_ratings`. If null
+              be found in endpoint `/api/enumeration/lead_ratings`. If null
               then all ratings are included.
         - name: lead_description
           in: query
@@ -4416,7 +4416,7 @@ paths:
           schema:
             type: string
             description: the industry associated with the Salesforce Lead - permissible
-              values can be found in endpoint `/salesforce_gpt/enumeration/industries`.
+              values can be found in endpoint `/api/enumeration/industries`.
               If null the all industries are included. Substring search is supported.
         - name: lead_is_deleted
           in: query
@@ -4696,7 +4696,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/enumeration/lead_statuses:
+  /api/enumeration/lead_statuses:
     get:
       tags:
         - lead
@@ -4744,7 +4744,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/enumeration/lead_sources:
+  /api/enumeration/lead_sources:
     get:
       tags:
         - lead
@@ -4792,7 +4792,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/opportunities/products:
+  /api/opportunities/products:
     get:
       tags:
         - opportunity-product
@@ -4888,7 +4888,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/contracts/summary:
+  /api/contracts/summary:
     get:
       tags:
         - aggregate
@@ -4994,7 +4994,7 @@ paths:
           schema:
             type: string
             description: "the status of the contract. Permissible values can be found\
-            \ in endpoint '/salesforce_gpt/enumeration/contract_statuses'. If null,\
+            \ in endpoint '/api/enumeration/contract_statuses'. If null,\
             \ then all statuses are included."
         - name: contract_term
           in: query
@@ -5098,7 +5098,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/accounts/files:
+  /api/accounts/files:
     get:
       tags:
         - content
@@ -5312,7 +5312,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/enumeration/contract_statuses:
+  /api/enumeration/contract_statuses:
     get:
       tags:
         - contract-status
@@ -5361,7 +5361,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/users:
+  /api/users:
     get:
       tags:
         - salesforce
@@ -6092,7 +6092,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/opportunities/tasks:
+  /api/opportunities/tasks:
     get:
       tags:
         - opportunity-task
@@ -6102,7 +6102,7 @@ paths:
       summary: Retrieve Opportunity Tasks.
       description: "Retrieves tasks related to opportunities based on filters like\
         \ opportunity name, opportunity id, task id, task subject and task subtype.\
-        \ Permissible values for task sabtypes can be found in endpoint '/salesforce_gpt/enumeration/task_subtypes'"
+        \ Permissible values for task sabtypes can be found in endpoint '/api/enumeration/task_subtypes'"
       operationId: no_decl_94805
       parameters:
         - name: task_last_modified_date_range_end
@@ -6180,7 +6180,7 @@ paths:
           schema:
             type: string
             description: the subtype of the task related with a given opportunity. Permissible
-              values can be found in endpoint '/salesforce_gpt/enumeration/task_subtypes'.
+              values can be found in endpoint '/api/enumeration/task_subtypes'.
         - name: account_id
           in: query
           required: false
@@ -6440,7 +6440,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/business_cases:
+  /api/business_cases:
     get:
       tags:
         - account
@@ -6588,7 +6588,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/accounts/tasks:
+  /api/accounts/tasks:
     get:
       tags:
         - account-task
@@ -6597,7 +6597,7 @@ paths:
       summary: Retrieve Account Tasks.
       description: "Retrieves tasks and related account information from Salesforce\
         \ based on filters like account name, account ID, and task subject. Permissible\
-        \ values for task sabtypes can be found in endpoint '/salesforce_gpt/enumeration/task_subtypes'"
+        \ values for task sabtypes can be found in endpoint '/api/enumeration/task_subtypes'"
       operationId: no_decl_94807
       parameters:
         - name: task_last_modified_date_range_end
@@ -6669,7 +6669,7 @@ paths:
           schema:
             type: string
             description: the subtype of the task related to a given account. Permissible
-              values can be found in endpoint '/salesforce_gpt/enumeration/task_subtypes'.
+              values can be found in endpoint '/api/enumeration/task_subtypes'.
         - name: account_id
           in: query
           required: false
@@ -6929,7 +6929,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/opportunities/tasks/summary:
+  /api/opportunities/tasks/summary:
     get:
       tags:
         - task
@@ -6978,7 +6978,7 @@ paths:
           schema:
             type: string
             description: the subtype of the task related with a given opportunity. Permissible
-              values can be found in endpoint '/salesforce_gpt/enumeration/task_subtypes'
+              values can be found in endpoint '/api/enumeration/task_subtypes'
         - name: task_priority
           in: query
           required: false
@@ -7071,7 +7071,7 @@ paths:
             text/plain: {}
       security:
         - api_key: []
-  /salesforce_gpt/opportunities/events:
+  /api/opportunities/events:
     get:
       tags:
         - event

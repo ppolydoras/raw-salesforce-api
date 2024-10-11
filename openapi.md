@@ -2,45 +2,45 @@
 
 ### Table of Contents
 
-- [/salesforce_gpt/accounts](#salesforce_gptaccounts)
-- [/salesforce_gpt/accounts/events](#salesforce_gptaccountsevents)
-- [/salesforce_gpt/accounts/files](#salesforce_gptaccountsfiles)
-- [/salesforce_gpt/accounts/summary](#salesforce_gptaccountssummary)
-- [/salesforce_gpt/accounts/tasks](#salesforce_gptaccountstasks)
-- [/salesforce_gpt/accounts/tasks/summary](#salesforce_gptaccountstaskssummary)
-- [/salesforce_gpt/business_cases](#salesforce_gptbusiness_cases)
-- [/salesforce_gpt/business_cases/experts](#salesforce_gptbusiness_casesexperts)
-- [/salesforce_gpt/contacts](#salesforce_gptcontacts)
-- [/salesforce_gpt/contacts/summary](#salesforce_gptcontactssummary)
-- [/salesforce_gpt/contracts](#salesforce_gptcontracts)
-- [/salesforce_gpt/contracts/summary](#salesforce_gptcontractssummary)
-- [/salesforce_gpt/enumeration/account_types](#salesforce_gptenumerationaccount_types)
-- [/salesforce_gpt/enumeration/contract_statuses](#salesforce_gptenumerationcontract_statuses)
-- [/salesforce_gpt/enumeration/industries](#salesforce_gptenumerationindustries)
-- [/salesforce_gpt/enumeration/lead_sources](#salesforce_gptenumerationlead_sources)
-- [/salesforce_gpt/enumeration/lead_statuses](#salesforce_gptenumerationlead_statuses)
-- [/salesforce_gpt/enumeration/opportunity_stages](#salesforce_gptenumerationopportunity_stages)
-- [/salesforce_gpt/enumeration/ratings](#salesforce_gptenumerationratings)
-- [/salesforce_gpt/enumeration/task_subtypes](#salesforce_gptenumerationtask_subtypes)
-- [/salesforce_gpt/leads](#salesforce_gptleads)
-- [/salesforce_gpt/leads/summary](#salesforce_gptleadssummary)
-- [/salesforce_gpt/opportunities](#salesforce_gptopportunities)
-- [/salesforce_gpt/opportunities/events](#salesforce_gptopportunitiesevents)
-- [/salesforce_gpt/opportunities/products](#salesforce_gptopportunitiesproducts)
-- [/salesforce_gpt/opportunities/summary](#salesforce_gptopportunitiessummary)
-- [/salesforce_gpt/opportunities/tasks](#salesforce_gptopportunitiestasks)
-- [/salesforce_gpt/opportunities/tasks/summary](#salesforce_gptopportunitiestaskssummary)
-- [/salesforce_gpt/products](#salesforce_gptproducts)
-- [/salesforce_gpt/products/files](#salesforce_gptproductsfiles)
-- [/salesforce_gpt/products/summary](#salesforce_gptproductssummary)
-- [/salesforce_gpt/users](#salesforce_gptusers)
-- [/salesforce_gpt/users/summary](#salesforce_gptuserssummary)
-- [/salesforce_gpt/utilities/currentdatetime](#salesforce_gptutilitiescurrentdatetime)
+- [/api/accounts](#salesforce_gptaccounts)
+- [/api/accounts/events](#salesforce_gptaccountsevents)
+- [/api/accounts/files](#salesforce_gptaccountsfiles)
+- [/api/accounts/summary](#salesforce_gptaccountssummary)
+- [/api/accounts/tasks](#salesforce_gptaccountstasks)
+- [/api/accounts/tasks/summary](#salesforce_gptaccountstaskssummary)
+- [/api/business_cases](#salesforce_gptbusiness_cases)
+- [/api/business_cases/experts](#salesforce_gptbusiness_casesexperts)
+- [/api/contacts](#salesforce_gptcontacts)
+- [/api/contacts/summary](#salesforce_gptcontactssummary)
+- [/api/contracts](#salesforce_gptcontracts)
+- [/api/contracts/summary](#salesforce_gptcontractssummary)
+- [/api/enumeration/account_types](#salesforce_gptenumerationaccount_types)
+- [/api/enumeration/contract_statuses](#salesforce_gptenumerationcontract_statuses)
+- [/api/enumeration/industries](#salesforce_gptenumerationindustries)
+- [/api/enumeration/lead_sources](#salesforce_gptenumerationlead_sources)
+- [/api/enumeration/lead_statuses](#salesforce_gptenumerationlead_statuses)
+- [/api/enumeration/opportunity_stages](#salesforce_gptenumerationopportunity_stages)
+- [/api/enumeration/ratings](#salesforce_gptenumerationratings)
+- [/api/enumeration/task_subtypes](#salesforce_gptenumerationtask_subtypes)
+- [/api/leads](#salesforce_gptleads)
+- [/api/leads/summary](#salesforce_gptleadssummary)
+- [/api/opportunities](#salesforce_gptopportunities)
+- [/api/opportunities/events](#salesforce_gptopportunitiesevents)
+- [/api/opportunities/products](#salesforce_gptopportunitiesproducts)
+- [/api/opportunities/summary](#salesforce_gptopportunitiessummary)
+- [/api/opportunities/tasks](#salesforce_gptopportunitiestasks)
+- [/api/opportunities/tasks/summary](#salesforce_gptopportunitiestaskssummary)
+- [/api/products](#salesforce_gptproducts)
+- [/api/products/files](#salesforce_gptproductsfiles)
+- [/api/products/summary](#salesforce_gptproductssummary)
+- [/api/users](#salesforce_gptusers)
+- [/api/users/summary](#salesforce_gptuserssummary)
+- [/api/utilities/currentdatetime](#salesforce_gptutilitiescurrentdatetime)
 
 
 ## Version: 1.0.0
 
-### /salesforce_gpt/users/summary
+### /api/users/summary
 
 #### GET
 ##### Summary:
@@ -82,7 +82,7 @@ Returns a summary of Salesforce users based on various filters and grouping opti
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/contracts
+### /api/contracts
 
 #### GET
 ##### Summary:
@@ -91,7 +91,7 @@ Get contracts by account name, end date (renewal date) and billing address
 
 ##### Description:
 
-Retrieve contracts by account name, contract description, status, contract terms, pricebook id, owner, start date, end date (renewal date) and billing address. Permissible values for status can be found in endpoint `/salesforce_gpt/enumeration/contract_statuses`
+Retrieve contracts by account name, contract description, status, contract terms, pricebook id, owner, start date, end date (renewal date) and billing address. Permissible values for status can be found in endpoint `/api/enumeration/contract_statuses`
 
 ##### Parameters
 
@@ -137,7 +137,7 @@ Retrieve contracts by account name, contract description, status, contract terms
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/products/files
+### /api/products/files
 
 #### GET
 ##### Summary:
@@ -172,7 +172,7 @@ Retrieves all files associated with a specific product ID.
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/contacts
+### /api/contacts
 
 #### GET
 ##### Summary:
@@ -229,7 +229,7 @@ Retrieves Salesforce contacts with pagination and various filters such as accoun
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/enumeration/task_subtypes
+### /api/enumeration/task_subtypes
 
 #### GET
 ##### Summary:
@@ -258,7 +258,7 @@ Returns a list of Task Subtypes, such as "Email", "Call", and "Task".
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/enumeration/industries
+### /api/enumeration/industries
 
 #### GET
 ##### Summary:
@@ -287,7 +287,7 @@ This endpoint returns a list of industry names for Salesforce Accounts or Leads.
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/accounts/summary
+### /api/accounts/summary
 
 #### GET
 ##### Summary:
@@ -344,7 +344,7 @@ Summarizes the total number of Salesforce accounts based on various filters and 
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/opportunities
+### /api/opportunities
 
 #### GET
 ##### Summary:
@@ -353,7 +353,7 @@ Retrieve Salesforce Opportunities.
 
 ##### Description:
 
-Retrieve opportunities based on optional filters like account name, owner name, and stage from the Salesforce database. The list of permissible values for opportunity_stage can be found in this endpoint `/salesforce_gpt/enumeration/opportunity_stages`
+Retrieve opportunities based on optional filters like account name, owner name, and stage from the Salesforce database. The list of permissible values for opportunity_stage can be found in this endpoint `/api/enumeration/opportunity_stages`
 
 ##### Parameters
 
@@ -397,7 +397,7 @@ Retrieve opportunities based on optional filters like account name, owner name, 
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/utilities/currentdatetime
+### /api/utilities/currentdatetime
 
 #### GET
 ##### Summary:
@@ -426,7 +426,7 @@ Retrieve current Date & Time along with timezone
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/enumeration/account_types
+### /api/enumeration/account_types
 
 #### GET
 ##### Summary:
@@ -455,7 +455,7 @@ Returns the closed list of account types, used in Salesforce Account table.
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/opportunities/summary
+### /api/opportunities/summary
 
 #### GET
 ##### Summary:
@@ -502,7 +502,7 @@ Summarizes the total number of opportunities based on various filters and groupi
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/accounts
+### /api/accounts
 
 #### GET
 ##### Summary:
@@ -560,7 +560,7 @@ Retrieves Salesforce accounts with pagination and supports various filters like 
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/enumeration/ratings
+### /api/enumeration/ratings
 
 #### GET
 ##### Summary:
@@ -589,7 +589,7 @@ Returns a list of different ratings for Salesforce Leads or Accounts.
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/accounts/events
+### /api/accounts/events
 
 #### GET
 ##### Summary:
@@ -638,7 +638,7 @@ Retrieves events related to accounts based on filters like account name, account
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/products
+### /api/products
 
 #### GET
 ##### Summary:
@@ -687,7 +687,7 @@ Retrieves products based on various filters such as product name, description, f
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/accounts/tasks/summary
+### /api/accounts/tasks/summary
 
 #### GET
 ##### Summary:
@@ -730,7 +730,7 @@ Summarizes the total number of tasks related to a Salesforce Account, with vario
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/products/summary
+### /api/products/summary
 
 #### GET
 ##### Summary:
@@ -778,7 +778,7 @@ Summarizes the total, active, deleted and archived products based on various fil
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/leads/summary
+### /api/leads/summary
 
 #### GET
 ##### Summary:
@@ -825,7 +825,7 @@ This endpoint retrieves a summary of leads based on various filters and groups t
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/business_cases/experts
+### /api/business_cases/experts
 
 #### GET
 ##### Summary:
@@ -871,7 +871,7 @@ Retrieves Salesforce Business Case Experts based on specified filters.
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/contacts/summary
+### /api/contacts/summary
 
 #### GET
 ##### Summary:
@@ -910,7 +910,7 @@ Summarizes the total number of contacts in Salesforce, grouped by specified fiel
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/enumeration/opportunity_stages
+### /api/enumeration/opportunity_stages
 
 #### GET
 ##### Summary:
@@ -939,7 +939,7 @@ Returns a list of stages in Salesforce Opportunities.
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/leads
+### /api/leads
 
 #### GET
 ##### Summary:
@@ -948,7 +948,7 @@ Get leads by rating and status
 
 ##### Description:
 
-Retrieves accounts from Salesforce Lead based on filters like rating and status. In order to retrieve permissible values for ratings, statuses, sources and industries, consult `/salesforce_gpt/enumeration/ratings`, `/salesforce_gpt/enumeration/lead_statuses`, `/salesforce_gpt/enumeration/lead_sources`, `/salesforce_gpt/enumeration/industries` respectively
+Retrieves accounts from Salesforce Lead based on filters like rating and status. In order to retrieve permissible values for ratings, statuses, sources and industries, consult `/api/enumeration/ratings`, `/api/enumeration/lead_statuses`, `/api/enumeration/lead_sources`, `/api/enumeration/industries` respectively
 
 ##### Parameters
 
@@ -1000,7 +1000,7 @@ Retrieves accounts from Salesforce Lead based on filters like rating and status.
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/enumeration/lead_statuses
+### /api/enumeration/lead_statuses
 
 #### GET
 ##### Summary:
@@ -1029,7 +1029,7 @@ Returns a list of different statuses for Salesforce Leads.
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/enumeration/lead_sources
+### /api/enumeration/lead_sources
 
 #### GET
 ##### Summary:
@@ -1058,7 +1058,7 @@ Retrieve the List of Salesforce Lead Sources
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/opportunities/products
+### /api/opportunities/products
 
 #### GET
 ##### Summary:
@@ -1096,7 +1096,7 @@ Retrieves products related to opportunities based on filters like opportunity na
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/contracts/summary
+### /api/contracts/summary
 
 #### GET
 ##### Summary:
@@ -1143,7 +1143,7 @@ Summarizes the total number of contracts based on various filters and groups the
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/accounts/files
+### /api/accounts/files
 
 #### GET
 ##### Summary:
@@ -1178,7 +1178,7 @@ Retrieves all files associated with a specific account ID.
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/enumeration/contract_statuses
+### /api/enumeration/contract_statuses
 
 #### GET
 ##### Summary:
@@ -1207,7 +1207,7 @@ Returns a list of contract status codes, such as "Draft", "InApproval", and "Act
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/users
+### /api/users
 
 #### GET
 ##### Summary:
@@ -1256,7 +1256,7 @@ Returns Salesforce users based on various filters such as username, email, activ
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/opportunities/tasks
+### /api/opportunities/tasks
 
 #### GET
 ##### Summary:
@@ -1265,7 +1265,7 @@ Retrieve Opportunity Tasks.
 
 ##### Description:
 
-Retrieves tasks related to opportunities based on filters like opportunity name, opportunity id, task id, task subject and task subtype. Permissible values for task sabtypes can be found in endpoint '/salesforce_gpt/enumeration/task_subtypes'
+Retrieves tasks related to opportunities based on filters like opportunity name, opportunity id, task id, task subject and task subtype. Permissible values for task sabtypes can be found in endpoint '/api/enumeration/task_subtypes'
 
 ##### Parameters
 
@@ -1309,7 +1309,7 @@ Retrieves tasks related to opportunities based on filters like opportunity name,
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/business_cases
+### /api/business_cases
 
 #### GET
 ##### Summary:
@@ -1353,7 +1353,7 @@ Retrieves Salesforce business cases based on various search parameters.
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/accounts/tasks
+### /api/accounts/tasks
 
 #### GET
 ##### Summary:
@@ -1362,7 +1362,7 @@ Retrieve Account Tasks.
 
 ##### Description:
 
-Retrieves tasks and related account information from Salesforce based on filters like account name, account ID, and task subject. Permissible values for task sabtypes can be found in endpoint '/salesforce_gpt/enumeration/task_subtypes'
+Retrieves tasks and related account information from Salesforce based on filters like account name, account ID, and task subject. Permissible values for task sabtypes can be found in endpoint '/api/enumeration/task_subtypes'
 
 ##### Parameters
 
@@ -1404,7 +1404,7 @@ Retrieves tasks and related account information from Salesforce based on filters
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/opportunities/tasks/summary
+### /api/opportunities/tasks/summary
 
 #### GET
 ##### Summary:
@@ -1447,7 +1447,7 @@ Summarizes the total number of tasks related to a given opportunity, with variou
 | --- | --- |
 | api_key | |
 
-### /salesforce_gpt/opportunities/events
+### /api/opportunities/events
 
 #### GET
 ##### Summary:
