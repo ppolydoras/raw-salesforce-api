@@ -24,6 +24,7 @@ The goal of this API is to make Salesforce data easily accessible for various ap
 
 ![Class Diagram of Logical Entities Exposed by the API Layer](salesforce.png)
 
+
 ### Endpoints
 
 Please refer to the [API documentation](openapi.md) and [OpenAPI spec yaml](openapi.yaml) for a detailed list of endpoints and their descriptions.
@@ -31,6 +32,7 @@ Please refer to the [API documentation](openapi.md) and [OpenAPI spec yaml](open
 ## Basic Structure of SQL Files
 
 Each SQL file contains a query that retrieves data from Salesforce. The queries are written in standard SQL and are designed for flexibility, supporting dynamic filtering and pagination.
+
 
 ## Types of Queries
 
