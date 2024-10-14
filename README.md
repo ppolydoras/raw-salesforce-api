@@ -211,6 +211,7 @@ ORDER BY account_id
     LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);
 ```
 
+
 #### Summary Query Example
 
 ```sql 
