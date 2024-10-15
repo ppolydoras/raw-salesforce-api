@@ -186,7 +186,6 @@ Salesforce schemas can vary significantly between organizations. This template i
 
 - **Modify SQL Queries**: Adjust the provided SQL queries to include additional fields or entities specific to your Salesforce instance.
 - **Add New Endpoints**: Create new SQL files to define additional API endpoints as needed.
-- **Utilize Snapi**: Explore using Snapi, RAW Labs' custom language, for more complex data integration and manipulation tasks. Refer to the [Snapi documentation](https://docs.raw-labs.com/docs/snapi/introduction) for more information.
 
 ## Contributing
 
@@ -214,7 +213,6 @@ We welcome contributions!
     - [Using Data Sources](https://docs.raw-labs.com/docs/sql/data-sources/overview)
     - [Salesforce Data Source](https://docs.raw-labs.com/sql/data-sources/salesforce)
     - [Creating APIs with RAW Labs](https://docs.raw-labs.com/docs/publishing-api/overview)
-    - [Introduction to Snapi](https://docs.raw-labs.com/docs/snapi/introduction)
 
 - **Community Forum**:
   - Join the discussion on our [Community Forum](https://www.raw-labs.com/community).
