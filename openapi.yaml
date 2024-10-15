@@ -3,7 +3,7 @@ info:
   title: "OpenApi spec of organization: dev-mlmsul7huphxehi"
   version: 1.0.0
 servers:
-  - url: https://dev-mlmsul7huphxehi.integration.api.raw-labs.com
+  - url: https://xxx.api.raw-labs.com
 paths:
   /api/users/summary:
     get:

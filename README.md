@@ -1,341 +1,178 @@
-# Salesforce RAW API
+
+# Salesforce API Template for RAW Labs
 
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Basic Structure of SQL Files](#basic-structure-of-sql-files)
-3. [Types of Queries](#types-of-queries)
-   - [Basic Query Example](#basic-query-example)
-   - [Summary Query Example](#summary-query-example)
-4. [Filters](#filters)
-   - [Basic Equality Filters](#basic-equality-filters)
-   - [Substring Search](#substring-search)
-   - [Equality Search with Any Value from a Comma-Separated List](#equality-search-with-any-value-from-a-comma-separated-list)
-   - [Date Comparison](#date-comparison)
-5. [Pagination](#pagination)
+   - [Description](#description)
+   - [How It Works](#how-it-works)
+   - [Features](#features)
+2. [Getting Started](#getting-started)
+   - [Prerequisites](#prerequisites)
+   - [Setup Instructions](#setup-instructions)
+3. [Domain Entities](#domain-entities)
+   - [Entities Overview](#entities-overview)
+   - [Entity Relationships](#entity-relationships)
+4. [Query Structure](#query-structure)
+   - [Basic Structure of SQL Files](#basic-structure-of-sql-files)
+   - [Types of Queries](#types-of-queries)
+5. [Filters and Pagination](#filters-and-pagination)
+   - [Filters](#filters)
+   - [Pagination](#pagination)
+6. [Customization](#customization)
+7. [Contributing](#contributing)
+8. [Support and Troubleshooting](#support-and-troubleshooting)
+9. [License](#license)
+10. [Acknowledgements](#acknowledgements)
+11. [Contact](#contact)
+
+---
 
 ## Introduction
 
-This repository provides a streamlined API layer built on top of Salesforce, designed using the [RAW platform](https://raw-labs.com/). The API simplifies access to Salesforce data by offering well-defined endpoints for major Salesforce objects, such as accounts, contacts, leads, opportunities, and custom entities. By leveraging the RAW platform, this solution efficiently handles data retrieval and filtering without the need for complex setups or additional infrastructure.
+### Description
 
-The goal of this API is to make Salesforce data easily accessible for various applications and services, focusing on simplicity, flexibility, and scalability. Each endpoint is designed to return relevant data with support for filtering through query parameters, allowing users to query Salesforce data in a straightforward, RESTful manner.
+This repository provides a **Salesforce API template** for integrating Salesforce data into the RAW Labs platform. It demonstrates how to retrieve and manipulate Salesforce data using SQL queries on a logical Salesforce database within RAW Labs. The template focuses on main Salesforce entities and serves as a starting point for users to build custom APIs tailored to their needs. Since Salesforce schemas can be highly dynamic, this template offers a flexible approach to data retrieval and integration.
 
-### Entities
+### How It Works
+
+Under the hood, RAW Labs utilizes a [Multicorn2 Foreign Data Wrapper](https://multicorn.org/) for Salesforce, which internally leverages the Force.com SDK in Java and interacts with the Python part of Multicorn. This setup is completely transparent to the user, who only needs to provide Salesforce credentials to access the data as if it were a standard database within RAW Labs.
+
+### Features
+
+- **Real-time Data Access**: Query Salesforce data in real-time without the need for data replication.
+- **Predefined Templates**: Utilize templates for common data access patterns to speed up development.
+- **Secure OAuth 2.0 Authentication**: Ensure secure access to your data with industry-standard authentication.
+- **Data Integration**: Combine Salesforce data with other data sources supported by RAW Labs.
+- **Customizable Queries**: Adjust queries to fit your specific Salesforce schema and business logic.
+
+## Getting Started
+
+### Prerequisites
+
+- **Salesforce Account**:
+  - An active Salesforce account with API access enabled.
+  - Necessary permissions to access desired objects and fields.
+- **RAW Labs Account**:
+  - An active RAW Labs account. [Sign up here](https://app.raw-labs.com/register) if you don't have one.
+- **Permissions**:
+  - **Salesforce**:
+    - API Enabled
+    - Access to connected apps
+  - **RAW Labs**:
+    - Admin role to your RAW Labs account.
+- **Dependencies**:
+  - Web browser to access RAW Labs and Salesforce.
+  - Internet connectivity.
+
+### Setup Instructions
+
+1. **Configure Salesforce Credentials in RAW Labs**:
+   - Follow the instructions in the [RAW Labs Salesforce Data Source documentation](https://docs.raw-labs.com/sql/data-sources/salesforce) to set up your Salesforce credentials.
+
+2. **Clone the Repository**:
+   - Clone this repository into your RAW Labs workspace.
+
+3. **Explore and Customize SQL Files**:
+   - Review the provided `.sql` files.
+   - Customize the queries to suit your data needs.
+
+4. **Create APIs in RAW Labs**:
+   - Use RAW Labs to publish the SQL queries as APIs.
+   - Refer to the [Building APIs documentation](https://docs.raw-labs.com/docs/building-api-in-raw/) for guidance.
+
+5. **Test Your APIs**:
+   - Use RAW Labs' testing tools or tools like Postman to test your APIs.
+
+## Domain Entities
+
+### Entities Overview
+
+The template focuses on key Salesforce entities:
+
+- **Account**: Represents an individual customer account, organization, or partner involved with your business.
+- **Contact**: An individual associated with an Account.
+- **Opportunity**: A potential sales deal that you want to track.
+- **Task**: Represents a to-do item or action that needs to be completed.
+
+### Entity Relationships
 
 ![Class Diagram of Logical Entities Exposed by the API Layer](salesforce.png)
 
+*Alt text: Class diagram showing relationships between Account, Contact, Opportunity, and Task entities.*
 
-### Endpoints
+## Query Structure
 
-Please refer to the [API documentation](openapi.md) and [OpenAPI spec yaml](openapi.yaml) for a detailed list of endpoints and their descriptions.
-
-
-## Basic Structure of SQL Files
+### Basic Structure of SQL Files
 
 Each SQL file contains a query that retrieves data from Salesforce. The queries are written in standard SQL and are designed for flexibility, supporting dynamic filtering and pagination.
 
+- **Parameters**: Defined at the top of each file using comments.
+- **Filters**: Applied in the `WHERE` clause based on parameters.
+- **Pagination**: Implemented using `LIMIT` and `OFFSET`.
 
-## Types of Queries
+### Types of Queries
 
-1. **Basic & Hierarchical Queries**: These queries retrieve data from a single table or a set of joined tables with potential parent-child relationships. Dynamic filtering and pagination are supported.
-2. **Summary Queries**: These queries aggregate data using functions like `SUM`, `COUNT`, `AVG`, etc.
+#### Basic & Hierarchical Queries
 
+These queries retrieve data from a single table or joined tables with potential parent-child relationships. They support dynamic filtering and pagination.
 
-#### Basic Query Example
-Here is an example of a basic query from <m>accounts.sql</m>:
+**Example:**
 
 ```sql
--- @param account_name the name of the Salesforce Account
--- @type account_name varchar
--- @default account_name null
--- @param account_industry comma-separated list of account industries - permissible values can be found in endpoint '/salesforce_gpt/enumeration/industries'. If null, all industries are included.
--- @type account_industry varchar
--- @default account_industry null
--- @param account_type comma-separated list of account types - permissible values can be found in endpoint '/salesforce_gpt/enumeration/account_types'. If null, all account types are included.
--- @type account_type varchar
--- @default account_type null
--- @param account_created_date_range_start account creation date is greater than or equal to account_created_date_range_start. Format YYYY-MM-DD.
--- @type account_created_date_range_start date
--- @default account_created_date_range_start null
--- @param account_created_date_range_end account creation date is lower than or equal to account_created_date_range_end. Format YYYY-MM-DD.
--- @type account_created_date_range_end date
--- @default account_created_date_range_end null
--- @param account_last_activity_date_range_start account's last activity date is greater than or equal to account_last_activity_date_range_start. Format YYYY-MM-DD.
--- @type account_last_activity_date_range_start date
--- @default account_last_activity_date_range_start null
--- @param account_last_activity_date_range_end account's last activity date is lower than or equal to account_last_activity_date_range_end. Format YYYY-MM-DD.
--- @type account_last_activity_date_range_end date
--- @default account_last_activity_date_range_end null
--- @param account_billing_country the billing address country of the account
--- @type account_billing_country varchar
--- @default account_billing_country null
--- @param account_billing_state the billing address state of the account
--- @type account_billing_state varchar
--- @default account_billing_state null
--- @param account_billing_postal_code the billing address postal code of the account
--- @type account_billing_postal_code integer
--- @default account_billing_postal_code null
--- @param account_billing_street the billing address street of the account
--- @type account_billing_street varchar
--- @default account_billing_street null
--- @param account_billing_city the billing address city of the account
--- @type account_billing_city varchar
--- @default account_billing_city null
--- @param account_is_deleted account deleted
--- @type account_is_deleted boolean
--- @default account_is_deleted null
--- @param annual_revenue_range_start Filter accounts with annual revenue greater than or equal to this value.
--- @type annual_revenue_range_start bigint
--- @default annual_revenue_range_start null
--- @param annual_revenue_range_end Filter accounts with annual revenue less than or equal to this value.
--- @type annual_revenue_range_end bigint
--- @default annual_revenue_range_end null
--- @param number_of_employees_range_start Filter accounts with number of employees greater than or equal to this value.
--- @type number_of_employees_range_start integer
--- @default number_of_employees_range_start null
--- @param number_of_employees_range_end Filter accounts with number of employees less than or equal to this value.
--- @type number_of_employees_range_end integer
--- @default number_of_employees_range_end null
--- @param account_rating Filter by account rating - permissible values can be found in endpoint '/salesforce_gpt/enumeration/ratings'. If null, all account ratings are included.
--- @type account_rating varchar
--- @default account_rating null
--- @param owner_id Filter by Salesforce User ID of the account owner.
--- @type owner_id varchar
--- @default owner_id null
--- @param clean_status Filter by clean status of the account. Permissible values are 'Clean', 'Pending'.
--- @type clean_status varchar
--- @default clean_status null
--- @param account_source Filter by the source of the account.
--- @type account_source varchar
--- @default account_source null
--- @param operating_hours_id Filter by operating hours ID of the account.
--- @type operating_hours_id varchar
--- @default operating_hours_id null
--- @param page the current page number to retrieve
--- @type page integer
--- @default page null
--- @param page_size the number of records per page. Default value is 25.
--- @type page_size integer
--- @default page_size null
--- @return Salesforce accounts with pagination and supports various filters like account industry, account type, and account billing country.
-
-WITH filtered_accounts AS (
-    SELECT "id" as "account_id",
-           "is_deleted" as "account_is_deleted",
-           "master_record_id" as "account_master_record_id",
-           "name" as "account_name",
-           "type" as "account_type",
-           "parent_id" as "account_parent_id",
-           "billing_street" as "account_billing_street",
-           "billing_city" as "account_billing_city",
-           "billing_state" as "account_billing_state",
-           "billing_postal_code" as "account_billing_postal_code",
-           "billing_country" as "account_billing_country",
-           "billing_latitude" as "account_billing_latitude",
-           "billing_longitude" as "account_billing_longitude",
-           "billing_geocode_accuracy" as "account_billing_geocode_accuracy",
-           "billing_address" as "account_billing_address",
-           "shipping_street" as "account_shipping_street",
-           "shipping_city" as "account_shipping_city",
-           "shipping_state" as "account_shipping_state",
-           "shipping_postal_code" as "account_shipping_postal_code",
-           "shipping_country" as "account_shipping_country",
-           "shipping_latitude" as "account_shipping_latitude",
-           "shipping_longitude" as "account_shipping_longitude",
-           "shipping_geocode_accuracy" as "account_shipping_geocode_accuracy",
-           "shipping_address" as "account_shipping_address",
-           "phone" as "account_phone",
-           "fax" as "account_fax",
-           "account_number" as "account_account_number",
-           "website" as "account_website",
-           "photo_url" as "account_photo_url",
-           "sic" as "account_sic",
-           "industry" as "account_industry",
-           "annual_revenue" as "account_annual_revenue",
-           "number_of_employees" as "account_number_of_employees",
-           "ownership" as "account_ownership",
-           "ticker_symbol" as "account_ticker_symbol",
-           "description" as "account_description",
-           "rating" as "account_rating",
-           "site" as "account_site",
-           "owner_id" as "account_owner_id",
-           "created_date" as "account_created_date",
-           "created_by_id" as "account_created_by_id",
-           "last_modified_date" as "account_last_modified_date",
-           "last_modified_by_id" as "account_last_modified_by_id",
-           "system_modstamp" as "account_system_modstamp",
-           "last_activity_date" as "account_last_activity_date",
-           "last_viewed_date" as "account_last_viewed_date",
-           "last_referenced_date" as "account_last_referenced_date",
-           "jigsaw" as "account_jigsaw",
-           "jigsaw_company_id" as "account_jigsaw_company_id",
-           "clean_status" as "account_clean_status",
-           "account_source" as "account_account_source",
-           "duns_number" as "account_duns_number",
-           "tradestyle" as "account_tradestyle",
-           "naics_code" as "account_naics_code",
-           "naics_desc" as "account_naics_desc",
-           "year_started" as "account_year_started",
-           "sic_desc" as "account_sic_desc",
-           "dandb_company_id" as "account_dandb_company_id",
-           "operating_hours_id" as "account_operating_hours_id"
-    FROM salesforce.salesforce_account
-    WHERE (industry ILIKE ANY (string_to_array(:account_industry, ','))
-           OR :account_industry IS NULL)
-      AND (type ILIKE ANY (string_to_array(:account_type, ','))
-           OR :account_type IS NULL)
-      AND (name ILIKE CONCAT('%',:account_name,'%') OR :account_name IS NULL)
-      AND ((created_date >= :account_created_date_range_start::timestamp) OR (:account_created_date_range_start IS NULL))
-      AND ((created_date <= :account_created_date_range_end::timestamp) OR (:account_created_date_range_end IS NULL))
-      AND ((last_activity_date >= :account_last_activity_date_range_start::date) OR (:account_last_activity_date_range_start IS NULL))
-      AND ((last_activity_date <= :account_last_activity_date_range_end::date) OR (:account_last_activity_date_range_end IS NULL))
-      AND (billing_country ILIKE CONCAT('%',:account_billing_country,'%') OR :account_billing_country IS NULL)
-      AND (billing_state ILIKE CONCAT('%',:account_billing_state,'%') OR :account_billing_state IS NULL)
-      AND (billing_postal_code ILIKE CONCAT('%',:account_billing_postal_code,'%') OR :account_billing_postal_code IS NULL)
-      AND (billing_street ILIKE CONCAT('%',:account_billing_street,'%') OR :account_billing_street IS NULL)
-      AND (billing_city ILIKE CONCAT('%',:account_billing_city,'%') OR :account_billing_city IS NULL)
-      AND (is_deleted=:account_is_deleted OR :account_is_deleted IS NULL)
-      AND (annual_revenue >= :annual_revenue_range_start OR :annual_revenue_range_start IS NULL)
-      AND (annual_revenue <= :annual_revenue_range_end OR :annual_revenue_range_end IS NULL)
-      AND (number_of_employees >= :number_of_employees_range_start OR :number_of_employees_range_start IS NULL)
-      AND (number_of_employees <= :number_of_employees_range_end OR :number_of_employees_range_end IS NULL)
-      AND (rating ILIKE :account_rating OR :account_rating IS NULL)
-      AND (owner_id = :owner_id OR :owner_id IS NULL)
-      AND (clean_status ILIKE :clean_status OR :clean_status IS NULL)
-      AND (account_source ILIKE :account_source OR :account_source IS NULL)
-      AND (operating_hours_id = :operating_hours_id OR :operating_hours_id IS NULL)
-)
+-- Retrieves Salesforce accounts with various filters
 SELECT *
-FROM filtered_accounts
-ORDER BY account_id
-    LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);
+FROM salesforce.salesforce_account
+WHERE (name ILIKE CONCAT('%', :account_name, '%') OR :account_name IS NULL)
+  AND (industry ILIKE ANY (string_to_array(:account_industry, ',')) OR :account_industry IS NULL)
+  -- Additional filters...
+ORDER BY id
+LIMIT COALESCE(:page_size, 25) OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);
 ```
 
+#### Summary Queries
 
-#### Summary Query Example
+These queries aggregate data using functions like `SUM`, `COUNT`, `AVG`, etc.
 
-```sql 
--- @param opportunity_name the name of the opportunity. Substring search is supported.
--- @type opportunity_name varchar
--- @default opportunity_name null
--- @param opportunity_id Salesforce Opportunity ID
--- @type opportunity_id varchar
--- @default opportunity_id null
--- @param task_subject the subject of the task related with a given opportunity. Substring search is supported.
--- @type task_subject varchar
--- @default task_subject null
--- @param task_subtype the subtype of the task related with a given opportunity. Permissible values can be found in endpoint '/salesforce_gpt/enumeration/task_subtypes'
--- @type task_subtype varchar
--- @default task_subtype null
--- @param task_status the status of the task related with a given opportunity. E.g., 'Not Started', 'Completed', 'In Progress'.
--- @type task_status varchar
--- @default task_status null
--- @param task_priority the priority of the task (High, Medium, Low)
--- @type task_priority varchar
--- @default task_priority null
--- @param task_created_date_range_start start date to filter tasks by creation date
--- @type task_created_date_range_start date
--- @default task_created_date_range_start null
--- @param task_created_date_range_end end date to filter tasks by creation date
--- @type task_created_date_range_end date
--- @default task_created_date_range_end null
--- @param group_by_field field to group the summary by (e.g., 'task_status', 'task_priority', 'task_subtype')
--- @type group_by_field varchar
--- @default group_by_field null
--- @return summary of the total number of tasks, grouped by the specified field.
+**Example:**
 
-WITH base_summary AS (
-    SELECT
-        t.id AS task_id,
-        t.subject AS task_subject,
-        t.status AS task_status,
-        t.priority AS task_priority,
-        t.task_subtype AS task_subtype,
-        t.activity_date AS task_activity_date,
-        t.is_closed AS task_is_closed,
-        t.is_high_priority AS task_is_high_priority,
-        t.created_date AS task_created_date,
-        o.name AS opportunity_name,
-        a.name AS account_name
-    FROM salesforce.salesforce_task t
-             INNER JOIN salesforce.salesforce_opportunity o ON o.id = t.what_id
-             INNER JOIN salesforce.salesforce_account a ON a.id = o.account_id
-    WHERE (o.name ILIKE CONCAT('%', :opportunity_name, '%') OR :opportunity_name IS NULL)
-      AND (o.id = :opportunity_id OR :opportunity_id IS NULL)
-      AND (t.subject ILIKE CONCAT('%', :task_subject, '%') OR :task_subject IS NULL)
-      AND (t.task_subtype ILIKE ANY (string_to_array(:task_subtype, ',')) OR :task_subtype IS NULL)
-      AND (t.status ILIKE ANY (string_to_array(:task_status, ',')) OR :task_status IS NULL)
-      AND (t.priority ILIKE ANY (string_to_array(:task_priority, ',')) OR :task_priority IS NULL)
-      AND (t.created_date >= :task_created_date_range_start::timestamp OR :task_created_date_range_start IS NULL)
-      AND (t.created_date <= :task_created_date_range_end::timestamp OR :task_created_date_range_end IS NULL)
-)
+```sql
+-- Summarizes tasks grouped by a specified field
 SELECT
     CASE
         WHEN :group_by_field = 'task_status' THEN task_status
         WHEN :group_by_field = 'task_priority' THEN task_priority
         WHEN :group_by_field = 'task_subtype' THEN task_subtype
         ELSE 'All'
-        END AS group_by_value,
-
+    END AS group_by_value,
     COUNT(task_id) AS total_tasks,
     COUNT(CASE WHEN task_is_closed = true THEN 1 END) AS closed_tasks,
-    COUNT(CASE WHEN task_is_high_priority = true THEN 1 END) AS high_priority_tasks,
-    COUNT(CASE WHEN task_created_date >= :task_created_date_range_start::timestamp
-          AND task_created_date <= :task_created_date_range_end::timestamp
-          THEN 1 END) AS tasks_created_in_date_range
+    COUNT(CASE WHEN task_is_high_priority = true THEN 1 END) AS high_priority_tasks
 FROM base_summary
 GROUP BY group_by_value
 ORDER BY group_by_value;
-
 ```
 
-## Filters
+## Filters and Pagination
 
-This section explains the different types of filters used in the SQL queries:
+### Filters
 
-### Basic Equality Filters
+The template supports various types of filters for flexible querying:
 
-These filters check if a column's value is equal to a specified parameter or `NULL` if no filter is applied.
+| Filter Type                               | Description                                                         | Example                                                         |
+|-------------------------------------------|---------------------------------------------------------------------|-----------------------------------------------------------------|
+| **Basic Equality Filters**                | Checks if a column's value equals the specified parameter or is NULL | `AND (is_deleted = :account_is_deleted OR :account_is_deleted IS NULL)` |
+| **Substring Search**                      | Searches for a substring within a column                            | `AND (name ILIKE CONCAT('%', :account_name, '%') OR :account_name IS NULL)` |
+| **Equality Search with Comma-Separated List** | Matches any value from a comma-separated list                       | `AND (industry ILIKE ANY (string_to_array(:account_industry, ',')) OR :account_industry IS NULL)` |
+| **Date Comparison**                       | Compares date columns with specified date ranges                    | `AND (created_date >= :account_created_date_range_start OR :account_created_date_range_start IS NULL)` |
 
-**Example:**
+### Pagination
 
-```sql
-AND (is_deleted = :account_is_deleted OR :account_is_deleted IS NULL)
-```
+The queries support pagination through `LIMIT` and `OFFSET`.
 
-### Substring Search
-
-These filters search for substrings in columns. If no filter is applied, the parameter is `NULL`.
-
-**Example:**
-
-```sql
-AND (name ILIKE CONCAT('%', :account_name, '%') OR :account_name IS NULL)
-```
-
-### Equality Search with Any Value from a Comma-Separated List
-
-These filters allow matching any value from a comma-separated list, or no filter if the parameter is `NULL`.
-
-**Example:**
-
-```sql
-AND (industry ILIKE ANY (string_to_array(:account_industry, ',')) OR :account_industry IS NULL)
-```
-
-### Date Comparison
-
-These filters compare a column’s date value with a specified date range, or allow null values if no filter is applied.
-
-**Example:**
-
-```sql
-AND (created_date >= :account_created_date_range_start OR :account_created_date_range_start IS NULL)
-```
-
-## Pagination
-
-The queries support pagination through the use of `LIMIT` and `OFFSET`. The `page` parameter specifies the current page number, while the `page_size` parameter controls the number of records per page. The default value for `page_size` is 25.
+- **Parameters**:
+  - `:page` (integer): The current page number (default is 1).
+  - `:page_size` (integer): The number of records per page (default is 25).
 
 **Example:**
 
@@ -343,3 +180,72 @@ The queries support pagination through the use of `LIMIT` and `OFFSET`. The `pag
 LIMIT COALESCE(:page_size, 25)
 OFFSET (COALESCE(:page, 1) - 1) * COALESCE(:page_size, 25);
 ```
+
+## Customization
+
+Salesforce schemas can vary significantly between organizations. This template is designed to be adaptable:
+
+- **Modify SQL Queries**: Adjust the provided SQL queries to include additional fields or entities specific to your Salesforce instance.
+- **Add New Endpoints**: Create new SQL files to define additional API endpoints as needed.
+- **Utilize Snapi**: Explore using Snapi, RAW Labs' custom language, for more complex data integration and manipulation tasks. Refer to the [Snapi documentation](https://docs.raw-labs.com/docs/snapi/introduction) for more information.
+
+## Contributing
+
+We welcome contributions!
+
+- **Reporting Issues**:
+  - Submit issues via [GitHub Issues](https://github.com/raw-labs/raw-salesforce-api/issues).
+
+- **Contributing Code**:
+  1. Fork the repository.
+  2. Create a feature branch: `git checkout -b feature/YourFeature`.
+  3. Commit your changes: `git commit -m 'Add YourFeature'`.
+  4. Push to the branch: `git push origin feature/YourFeature`.
+  5. Open a Pull Request with a detailed description of your changes.
+
+- **Code Guidelines**:
+  - Follow the [RAW Labs Coding Standards](https://docs.raw-labs.com/coding-standards).
+  - Write clear commit messages.
+  - Include documentation for new features.
+
+## Support and Troubleshooting
+
+- **Documentation**:
+  - Refer to the [RAW Labs Documentation](https://docs.raw-labs.com/docs/) for detailed guides.
+    - [Using Data Sources](https://docs.raw-labs.com/docs/sql/data-sources/overview)
+    - [Salesforce Data Source](https://docs.raw-labs.com/sql/data-sources/salesforce)
+    - [Creating APIs with RAW Labs](https://docs.raw-labs.com/docs/publishing-api/overview)
+    - [Introduction to Snapi](https://docs.raw-labs.com/docs/snapi/introduction)
+
+- **Community Forum**:
+  - Join the discussion on our [Community Forum](https://www.raw-labs.com/community).
+
+- **Contact Support**:
+  - Email us at [support@raw-labs.com](mailto:support@raw-labs.com) for assistance.
+
+## License
+
+This project is licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- **Contributors**: Thanks to all our contributors for their efforts.
+- **Third-Party Libraries**: This template utilizes Salesforce APIs in compliance with their [API Terms of Use](https://developer.salesforce.com/files/tos/Developerforce_TOU_20101119.pdf).
+
+## Contact
+
+- **Email**: [support@raw-labs.com](mailto:support@raw-labs.com)
+- **Website**: [https://raw-labs.com](https://raw-labs.com)
+- **Twitter**: [@RAWLabs](https://twitter.com/raw_labs)
+- **Discord**: [RAW Labs Server](https://discord.com/invite/AwFHYThJeh)
+
+---
+
+## Additional Resources
+
+- **RAW Labs Documentation**: Comprehensive guides and references are available at [docs.raw-labs.com](https://docs.raw-labs.com/).
+- **Salesforce Data Source**: Detailed instructions on connecting Salesforce with RAW Labs can be found [here](https://docs.raw-labs.com/sql/data-sources/salesforce).
+- **Publishing APIs**: Learn how to publish your SQL queries as APIs [here](https://docs.raw-labs.com/docs/building-api-in-raw/).
+- **Snapi Language**: Explore RAW Labs' custom language for data manipulation [here](https://docs.raw-labs.com/snapi/overview).
+- **SQL Language**: Explore RAW Labs' SQL language for data manipulation [here](https://docs.raw-labs.com/sql/overview).
+
