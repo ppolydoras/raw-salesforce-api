@@ -36,13 +36,12 @@ This repository provides a **Salesforce API template** for integrating Salesforc
 
 ### How It Works
 
-Under the hood, RAW Labs utilizes a [Multicorn2 Foreign Data Wrapper](https://multicorn.org/) for Salesforce, which internally leverages the Force.com SDK in Java and interacts with the Python part of Multicorn. This setup is completely transparent to the user, who only needs to provide Salesforce credentials to access the data as if it were a standard database within RAW Labs.
+[DAS SDK]()
 
 ### Features
 
 - **Real-time Data Access**: Query Salesforce data in real-time without the need for data replication.
 - **Predefined Templates**: Utilize templates for common data access patterns to speed up development.
-- **Secure OAuth 2.0 Authentication**: Ensure secure access to your data with industry-standard authentication.
 - **Data Integration**: Combine Salesforce data with other data sources supported by RAW Labs.
 - **Customizable Queries**: Adjust queries to fit your specific Salesforce schema and business logic.
 
