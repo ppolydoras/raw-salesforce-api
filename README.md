@@ -38,7 +38,6 @@ This repository provides a **Salesforce API template** for integrating Salesforc
 
 The RAW Labs platform allows you to create APIs by writing SQL queries that can access data from various data sources, including Salesforce. Under the hood, RAW Labs uses a Data Access Service (DAS) architecture to connect to numerous origin servers and/or data sources, including your Salesforce instance. The **DAS Architecture** acts as a bridge between RAW Labs and Salesforce, enabling seamless, real-time data retrieval without the need for data replication. Please note that detailed documentation on the DAS Architecture is currently a work in progress and will be provided soon.
 
-
 ### Features
 
 - **Real-time Data Access**: Query Salesforce data in real-time without the need for data replication.
