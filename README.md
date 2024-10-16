@@ -36,7 +36,8 @@ This repository provides a **Salesforce API template** for integrating Salesforc
 
 ### How It Works
 
-[DAS SDK]()
+The RAW Labs platform allows you to create APIs by writing SQL queries that can access data from various data sources, including Salesforce. Under the hood, RAW Labs uses a Data Access Service (DAS) architecture to connect to numerous origin servers and/or data sources, including your Salesforce instance. The **DAS Architecture** acts as a bridge between RAW Labs and Salesforce, enabling seamless, real-time data retrieval without the need for data replication. Please note that detailed documentation on the DAS Architecture is currently a work in progress and will be provided soon.
+
 
 ### Features
 
@@ -87,12 +88,21 @@ This repository provides a **Salesforce API template** for integrating Salesforc
 
 ### Entities Overview
 
+
 The template focuses on key Salesforce entities:
 
 - **Account**: Represents an individual customer account, organization, or partner involved with your business.
 - **Contact**: An individual associated with an Account.
 - **Opportunity**: A potential sales deal that you want to track.
-- **Task**: Represents a to-do item or action that needs to be completed.
+- **Task**: Represents a to-do item or action that needs to be completed, associated with accounts or opportunities.
+- **Event**: Scheduled meetings or events for accounts or opportunities.
+- **File**: Documents or files attached to accounts or products.
+- **Business_Case**: Custom object representing a business case (specific to your organization).
+- **Business_Case_Expert**: Custom object representing experts associated with a business case.
+- **Lead**: Prospective customers or sales opportunities.
+- **Product**: Items or services that your company sells.
+- **Contract**: Agreements between your company and an Account.
+- **User**: Individuals who have access to your Salesforce organization.
 
 ### Entity Relationships
 
@@ -234,7 +244,7 @@ This project is licensed under the **Apache License 2.0**. See the [LICENSE](LIC
 - **Email**: [support@raw-labs.com](mailto:support@raw-labs.com)
 - **Website**: [https://raw-labs.com](https://raw-labs.com)
 - **Twitter**: [@RAWLabs](https://twitter.com/raw_labs)
-- **Discord**: [RAW Labs Server](https://discord.com/invite/AwFHYThJeh)
+- **Community Forum**: [Forum](https://www.raw-labs.com/community)
 
 ---
 
