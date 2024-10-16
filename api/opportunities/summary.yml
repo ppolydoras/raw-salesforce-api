@@ -17,3 +17,4 @@ security:
     - opportunities:read
 computeClass: normal
 enabled: true
+expireSeconds: 90000

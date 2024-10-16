@@ -19,3 +19,4 @@ security:
     - opportunity-tasks:read
 computeClass: normal
 enabled: true
+expireSeconds: 90000
